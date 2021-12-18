@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Inertia\Inertia;
 use App\Models\Profile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -28,7 +29,7 @@ class ProfileController extends Controller
     {
         //
         $profile = new Profile();
-        return view('profile.form',['profile'=>$profile, 'title'=>'Crea tu Perfil']);
+        return Inertia::render('Profile/Form',['profile'=>$profile, 'title'=>'Crea tu Perfil']);
     }
 
     /**
