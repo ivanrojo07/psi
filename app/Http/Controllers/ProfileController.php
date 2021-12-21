@@ -7,6 +7,7 @@ use App\Models\Profile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Perfil\RequestCreate;
+use App\Http\Requests\Perfil\RequestUpdate;
 
 class ProfileController extends Controller
 {
@@ -18,6 +19,8 @@ class ProfileController extends Controller
     public function index()
     {
         //
+        $user = Auth::user();
+        return Inertia::render('Profile/Show',['user'=>$user, 'profile'=>$user->profile]);
     }
 
     /**
@@ -29,7 +32,7 @@ class ProfileController extends Controller
     {
         //
         $profile = new Profile();
-        return Inertia::render('Profile/Form',['profile'=>$profile, 'title'=>'Crea tu Perfil']);
+        return Inertia::render('Profile/Form',['profile'=>$profile, 'title'=>'Crea tu Perfil', 'method'=>'POST']);
     }
 
     /**
@@ -47,16 +50,7 @@ class ProfileController extends Controller
         return redirect()->route('dashboard');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+    
 
     /**
      * Show the form for editing the specified resource.
@@ -64,9 +58,9 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Profile $profile)
     {
-        //
+        return Inertia::render('Profile/Form', ['profile'=>$profile, 'title'=>'Editar tu Perfil', 'method'=>'PUT']);
     }
 
     /**
@@ -76,9 +70,11 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(RequestUpdate $request,Profile $profile)
     {
         //
+        $profile->update($request->all());
+        return redirect()->route('profile.index');
     }
 
     /**

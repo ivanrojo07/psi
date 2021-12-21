@@ -7,7 +7,7 @@ import Button from '@/Components/Button';
 import ValidationErrors from '@/Components/ValidationErrors';
 
 export default function Form(props) {
-    const { data, setData, post, processing, errors, reset } = useForm({
+    const { data, setData, post, put, processing, errors, reset } = useForm({
         name: props.profile.name ? props.profile.name : '',
         f_last_name: props.profile.f_last_name ? props.profile.f_last_name : '',
         m_last_name: props.profile.m_last_name ? props.profile.m_last_name : '',
@@ -21,7 +21,12 @@ export default function Form(props) {
 
     const submit = (e) => {
         e.preventDefault();
-        post(route('profile.store'));
+        if(props.method === "POST") {
+            post(route('profile.store'));
+        }
+        else{
+            put(route('profile.update',[props.profile]));
+        }
     }
     return (
         <Authenticated
@@ -71,7 +76,7 @@ export default function Form(props) {
 
                             <div className="flex items-center justify-end mt-4">
                                 <Button className="ml-3" processing={processing}>
-                                    Save
+                                    {props.method === "POST" ? "Save" : "Edit"}
                                 </Button>
                             </div>
                         </form>
