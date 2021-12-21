@@ -1,10 +1,7 @@
 import React from "react";
 import Authenticated from '@/Layouts/Authenticated';
 import { Head, Link } from '@inertiajs/inertia-react';
-<<<<<<< HEAD
 import Sidebar from "@/Components/Sidebar";
-=======
->>>>>>> cc1691e2f6b17ea684dcda1328a63bfa8eb9fc51
 
 
 export default function Show(props) {
