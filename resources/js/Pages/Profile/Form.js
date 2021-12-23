@@ -80,7 +80,7 @@ export default function Form(props) {
                             </div>
                             {
                                 props.method === "POST" 
-                                ?
+                                &&
                                 (<div>
                                     <Label className="hover:font-semibold" for="type" value="Type of user" />
                                     <select name="type" id="type" className='border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm block mt-1 w-full'>
@@ -89,8 +89,7 @@ export default function Form(props) {
                                        }
                                     </select>
                                 </div>)
-                                :
-                                ""
+                                
                             }
 
                             <div className="flex items-center justify-end mt-4">

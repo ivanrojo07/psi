@@ -5971,7 +5971,7 @@ function Form(props) {
               value: data.mobile_phone,
               handleChange: onHandleChange
             })]
-          }), props.method === "POST" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+          }), props.method === "POST" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_Label__WEBPACK_IMPORTED_MODULE_3__["default"], {
               className: "hover:font-semibold",
               "for": "type",
@@ -5987,7 +5987,7 @@ function Form(props) {
                 });
               })
             })]
-          }) : "", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
             className: "flex items-center justify-end mt-4",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_Button__WEBPACK_IMPORTED_MODULE_5__["default"], {
               className: "ml-3",
