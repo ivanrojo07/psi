@@ -53,4 +53,26 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasOne(Profile::class);
     }
+
+    /**
+     * Get the events associated with the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function events(): HasMany
+    {
+        return $this->hasMany(Profile::class);
+    }
+
+    /**
+     * Get the events associated with the Doctor user
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function doctorEvents(): HasMany
+    {
+        return $this->hasMany(Profile::class);
+    }
+
+
 }

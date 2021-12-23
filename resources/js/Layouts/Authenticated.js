@@ -24,7 +24,7 @@ export default function Authenticated({ auth, header, children }) {
 
                 <div className={
                     showingNavigationDropdown ? 
-                    "w-full bg-gray-100 pl-0 min-h-screen overlay"
+                    "w-screen bg-gray-100 pl-0 min-h-screen overlay"
                     : "w-full bg-gray-100 pl-0 min-h-screen"
                 } id="main-content">
                     <Navbar showingNavigationDropdown={showingNavigationDropdown} auth={auth} onClick={handleHamburgerClick}/>

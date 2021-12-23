@@ -21,11 +21,11 @@ export default function Form(props) {
 
     const submit = (e) => {
         e.preventDefault();
-        if(props.method === "POST") {
+        if (props.method === "POST") {
             post(route('profile.store'));
         }
-        else{
-            put(route('profile.update',[props.profile]));
+        else {
+            put(route('profile.update', [props.profile]));
         }
     }
     return (
@@ -38,9 +38,14 @@ export default function Form(props) {
         >
             <Head title="Profile" />
             <ValidationErrors errors={errors} />
-            <div className="py-12">
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                    <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                    <div className="px-4 sm:px-0">
+                        <h3 className="text-lg font-medium leading-6 text-gray-900">Profile</h3>
+                        <p className="mt-1 text-sm text-gray-600">
+                            This information will be displayed for information from the pacient and doctor.
+                        </p>
+                    </div>
+                    <div className="w-full mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
                         <form onSubmit={submit}>
 
                             <div>
@@ -73,6 +78,20 @@ export default function Form(props) {
 
                                 <Input id="mobile_phone" className="block mt-1 w-full" type="tel" pattern="[0-9]{10}" name="mobile_phone" value={data.mobile_phone} handleChange={onHandleChange} />
                             </div>
+                            {
+                                props.method === "POST" 
+                                ?
+                                (<div>
+                                    <Label className="hover:font-semibold" for="type" value="Type of user" />
+                                    <select name="type" id="type" className='border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm block mt-1 w-full'>
+                                       {
+                                           Object.keys(props.types).map((key) => <option value={key} >{props.types[key]}</option>)
+                                       }
+                                    </select>
+                                </div>)
+                                :
+                                ""
+                            }
 
                             <div className="flex items-center justify-end mt-4">
                                 <Button className="ml-3" processing={processing}>
@@ -82,7 +101,6 @@ export default function Form(props) {
                         </form>
                     </div>
                 </div>
-            </div>
         </Authenticated>
     )
 }

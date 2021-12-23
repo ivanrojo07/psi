@@ -21,6 +21,7 @@ class CreateProfilesTable extends Migration
             $table->date('birthday');
             $table->string('phone')->nullable();
             $table->string('mobile_phone')->nullable();
+            $table->unsignedInteger('type_id')->default(2);
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
 

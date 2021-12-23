@@ -38,7 +38,8 @@ class ProfileController extends Controller
     {
         //
         $profile = new Profile();
-        return Inertia::render('Profile/Form',['profile'=>$profile, 'title'=>'Crea tu Perfil', 'method'=>'POST']);
+        $types = $profile::TYPES;
+        return Inertia::render('Profile/Form',['profile'=>$profile, 'title'=>'Crea tu Perfil', 'method'=>'POST', 'types'=>$types]);
     }
 
     /**
