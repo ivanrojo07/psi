@@ -4,6 +4,7 @@ use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Application;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\User\CalendarController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +32,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     })->middleware(['profile'])->name('dashboard');
     
     Route::resource('profile', ProfileController::class);
+    Route::resource('calendar', CalendarController::class);
 });
 
 // Route::get('/dashboard', function () {
